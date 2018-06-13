@@ -54,24 +54,22 @@ window.onload = function () {
 			//up
 			let scrollForSidebar = transferServiceSidebar.getData('scrollFromDown');
 			if (scrolled < headerHeight + sidebarHeight && scrollForSidebar < headerHeight + sidebarHeight) {
-				sidebar.style.position = 'absolute';
 				sidebar.style.top = headerHeight + 'px';
 				transferServiceSidebar.setData({name: 'posFromUp', data: headerHeight});
 				abs = true;
 			}
 			else if (scrolled > scrollForSidebar-sidebarHeight-headerHeight) {
 				let pos = transferServiceSidebar.getData('posFromDown');
-				sidebar.style.position = 'absolute';
 				sidebar.style.top = pos + 'px';
 				transferServiceSidebar.setData({name: 'posFromUp', data: pos});
 				abs = true;
 			}
 			else if (scrolled < scrollForSidebar-sidebarHeight-headerHeight) {
-				sidebar.style.position = 'fixed';
-				sidebar.style.top = headerHeight + 'px';
+				sidebar.style.top = headerHeight + scrolled + 'px';
 				transferServiceSidebar.setData({name: 'posFromUp', data: scrolled+headerHeight});
 				abs = true;
-			}	
+			}
+			sidebar.style.position = 'absolute';	
 		 transferServiceSidebar.setData({name: 'scrollFromUp', data: scrolled});
 		}    
 		startScroll = scrolled;
@@ -101,24 +99,22 @@ window.onload = function () {
 			// up
 		let scrollForHeader = transferServiceHeader.getData('scrollFromDown');
 			if (scrolled < headerHeight  && scrollForHeader < headerHeight) {
-				header.style.position = 'absolute';
 				header.style.top = 0;
 				transferServiceHeader.setData({name: 'posFromUp', data: 0});
 				absHeader = true;
 			}
 			else if (scrolled > scrollForHeader-headerHeight) {
 				let pos = transferServiceHeader.getData('posFromDown');
-				header.style.position = 'absolute';
 				header.style.top = pos + 'px';
 				transferServiceHeader.setData({name: 'posFromUp', data: pos});
 				absHeader = true;
 			}
 			else if (scrolled < scrollForHeader-headerHeight) {
-				header.style.position = 'fixed';
-				header.style.top = 0;
+				header.style.top = scrolled + 'px';
 				transferServiceHeader.setData({name: 'posFromUp', data: scrolled});
 				absHeader = true;
-			}	
+			}
+			header.style.position = 'absolute';	
 		 transferServiceHeader.setData({name: 'scrollFromUp', data: scrolled});
 		}
 		startScrollHeader = scrolled;
